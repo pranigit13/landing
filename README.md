@@ -1,16 +1,75 @@
-# React + Vite
+# pranitasable.dev — portfolio landing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site for **Pranita Sable**: a single-page React app that introduces experience, skills, and upcoming projects on this domain.
 
-Currently, two official plugins are available:
+**Live site:** [https://pranitasable.dev](https://pranitasable.dev)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech stack
 
-## React Compiler
+- [React 19](https://react.dev/) — UI
+- [Vite 8](https://vite.dev/) — dev server and production build
+- [ESLint](https://eslint.org/) — static analysis
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Prerequisites
 
-## Expanding the ESLint configuration
+- **Node.js** 20+ (CI uses Node 22; align your local version with [`.github/workflows/ci.yml`](.github/workflows/ci.yml) if you want parity)
+- **npm** (comes with Node)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Local development
+
+Install dependencies:
+
+```bash
+npm ci
+```
+
+Start the dev server with hot reload:
+
+```bash
+npm run dev
+```
+
+Open the URL Vite prints (typically [http://localhost:5173](http://localhost:5173)).
+
+## Scripts
+
+| Command           | Description                          |
+|-------------------|--------------------------------------|
+| `npm run dev`     | Start Vite dev server                |
+| `npm run build`   | Production build to `dist/`          |
+| `npm run preview` | Serve `dist/` locally (smoke test)   |
+| `npm run lint`    | Run ESLint on the project            |
+
+## Continuous integration
+
+On every **pull request** and every **push to `main`**, GitHub Actions runs:
+
+1. `npm ci`
+2. `npm run lint`
+3. `npm run build`
+
+See [`.github/workflows/ci.yml`](.github/workflows/ci.yml). Enable **branch protection** on `main` and require this workflow to pass before merge if you want enforced gates.
+
+## Deployment
+
+The site deploys to **[Vercel](https://vercel.com/)** from this Git repository: pushes to `main` trigger a production build; pull requests get preview URLs when Vercel is connected to the repo.
+
+Custom domain and DNS (e.g. Cloudflare) are configured in the Vercel project and registrar — not in this repo.
+
+## Project layout
+
+```text
+landing/
+  src/
+    App.jsx       # Main page content and structure
+    App.css       # Component styles
+    index.css     # Global styles and design tokens
+    main.jsx      # React entry
+  index.html
+  vite.config.js
+  package.json
+```
+
+## License
+
+Private / personal — all rights reserved unless you add an explicit license later.
